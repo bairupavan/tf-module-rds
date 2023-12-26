@@ -42,8 +42,8 @@ resource "aws_rds_cluster" "cluster" {
   engine                  = "aurora-mysql"
   engine_version          = var.engine_version
   database_name           = "dummy"
-  master_username         = data.aws_ssm_parameter.db_user
-  master_password         = data.aws_ssm_parameter.db_password
+  master_username         = data.aws_ssm_parameter.db_user.value
+  master_password         = data.aws_ssm_parameter.db_password.value
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
   db_subnet_group_name    = aws_db_subnet_group.subnet-group.name
